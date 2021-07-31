@@ -5,7 +5,8 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.2.1.RELEASE</version>
+<!--        版本不符合，需要在这里修改版本-->
+        <version>2.0.9.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.example</groupId>
@@ -17,6 +18,13 @@
         <java.version>1.8</java.version>
     </properties>
     <dependencies>
+        <!-- springsecurity和thymeleaf整合的包 -->
+        <dependency>
+            <groupId>org.thymeleaf.extras</groupId>
+            <artifactId>thymeleaf-extras-springsecurity4</artifactId>
+            <version>3.0.4.RELEASE</version>
+        </dependency>
+
         <!-- web依赖 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>

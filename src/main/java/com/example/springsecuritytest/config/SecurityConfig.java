@@ -21,13 +21,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/level2/**").hasRole("vip2")
                 .antMatchers("/level3/**").hasRole("vip3")
                 .and()
-                .csrf().disable()//关闭csrf
+                .csrf().disable()//关闭csrf,默认是开启,防止网站被攻击
                 .formLogin().loginPage("/toLogin")//自定义登陆页面跳转
-                .defaultSuccessUrl("/index") //登陆成功跳转页面
-                .and()
-                .httpBasic().disable();
-        http.logout();//注销
-        //http.formLogin().loginProcessingUrl("/toLogin").permitAll();//跳回登陆,如果没有配置，这个登陆页面是security的登陆页面
+                .usernameParameter("username").passwordParameter("passwd");//自定义密码参数名称
+//                .defaultSuccessUrl("/index"); //登陆成功跳转页面
+//                .and()
+//                .httpBasic().disable();
+        http.logout().logoutSuccessUrl("/");//注销
+        http.formLogin().loginProcessingUrl("/toLogin").permitAll();//跳回登陆,如果没有配置，这个登陆页面是security的登陆页面
+        http.rememberMe();// 设置cookie存储,默认存储两星期
     }
 
     // 认证
